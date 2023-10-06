@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, result};
 use std::error::Error;
 
 pub fn run(config: Config)-> Result<(), Box<dyn Error>>{ 
@@ -29,7 +29,14 @@ impl Config {
 }
 
 pub fn search<'a>(query:&str, contents: &'a str) -> Vec<&'a str> { 
-    vec![]
+    let mut results= Vec::new() as Vec<&'a str>;
+
+    for line in contents.lines() { 
+        if line.contains(query){ 
+            results.push(line.trim());
+        }
+    }
+        results
 }
 
 # [cfg(test)]
@@ -39,7 +46,7 @@ mod tests{
 
     #[test]
     fn one_result(){ 
-        let query = "duct";
+        let query = "Still";
         let contents = "\
             I show less than I have to stay tasteful
             Still catching hate cause they’re hateful
