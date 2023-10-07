@@ -11,7 +11,7 @@ fn main() {
         println!("Error on parsing arguments: {err}");
         process::exit(1); // kills the process
     });
-   
+
 
     if let Err(e) = run(config) { 
         println!("Application error: {e}");
