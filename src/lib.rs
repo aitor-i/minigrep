@@ -1,11 +1,13 @@
-use std::{fs, result};
+use std::fs ;
 use std::error::Error;
 
 pub fn run(config: Config)-> Result<(), Box<dyn Error>>{ 
 
     let contents = fs::read_to_string(&config.file_path)?;
 
-    println!("With text: \n{}", &contents);
+    let search_result = search(&config.query, &contents);
+
+    println!("Found: {}", search_result[0]);
 
     return Ok(());
 }
