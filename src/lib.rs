@@ -78,4 +78,20 @@ mod tests{
             search(query, contents)
         );
     }
+
+    #[test]
+    fn case_sensitive() { 
+        
+        let query = "still";
+        let contents = "\
+            I show less than I have to stay tasteful
+            Still catching hate cause they’re hateful
+            Too much food out the gate it’s a plateful
+            Now your girls full of tate and she’s grateful";
+
+        assert_eq!(
+            vec![""],
+            search(query, contents)
+        );
+    }
 }
